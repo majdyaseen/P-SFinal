@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IE0121 Formula Sheet — Final Exam</title>
+<style>
+  @page { size: A4; margin: 12mm 12mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Times New Roman', serif;
+    font-size: 8.8pt;
+    line-height: 1.35;
+    color: #000;
+    background: #fff;
+  }
+  .page {
+    width: 100%;
+    page-break-after: always;
+    padding: 0;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* HEADER */
+  .hdr {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .hdr h1 { font-size: 11pt; font-weight: 700; letter-spacing: 0.5px; }
+  .hdr span { font-size: 8pt; opacity: 0.8; }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .col { }
+
+  /* SECTION BLOCK */
+  .sec {
+    border: 1px solid #333;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    overflow: hidden;
+  }
+  .sec-title {
+    background: #1a1a2e;
+    color: #fff;
+    font-size: 7.5pt;
+    font-weight: 700;
+    padding: 2px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .sec-body { padding: 4px 6px; }
+
+  /* FORMULA */
+  .f {
+    font-family: 'Courier New', monospace;
+    font-size: 8pt;
+    background: #f0f4ff;
+    border-left: 2.5px solid #1a1a2e;
+    padding: 2px 5px;
+    margin: 2px 0;
+    line-height: 1.45;
+  }
+  .f .lbl { font-family: 'Times New Roman', serif; font-size: 7pt; color: #555; font-style: italic; display: block; }
+
+  /* DISTRIBUTION TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; }
+  th { background: #e8ecff; font-weight: 700; padding: 2px 4px; border: 0.5px solid #aaa; text-align: left; }
+  td { padding: 2px 4px; border: 0.5px solid #ccc; font-family: 'Courier New', monospace; font-size: 7.3pt; }
+  tr:nth-child(even) td { background: #f8f8f8; }
+
+  /* NOTE */
+  .note { font-size: 7.3pt; color: #333; margin: 2px 0; padding-left: 4px; border-left: 2px solid #aaa; }
+  .warn { background: #fff8e6; border-left: 2px solid #f0a030; padding: 2px 5px; font-size: 7.3pt; color: #663300; margin: 2px 0; }
+
+  /* PAGE DIVIDER */
+  .divider { border: none; border-top: 1.5px dashed #555; margin: 5px 0; }
+
+  @media print {
+    body { background: #fff; }
+    .page { page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ████████████████████ PAGE 1 ████████████████████ -->
+<div class="page">
+  <div class="hdr">
+    <h1>IE0121 Probability &amp; Statistics — FINAL EXAM FORMULA SHEET</h1>
+    <span>Chapters 2, 3, 4, 5, 6 (excl. 6.5) | GJU | Page 1 of 2</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- COL 1: Ch2 Counting + Probability -->
+    <div class="col">
+      <div class="sec">
+        <div class="sec-title">Ch.2 — Counting Rules</div>
+        <div class="sec-body">
+          <div class="f"><span class="lbl">Multiplication Rule</span>n₁ × n₂ × ··· × nₖ</div>
+          <div class="f"><span class="lbl">Permutation (ordered, n distinct, take r)</span>ₙPᵣ = n! / (n−r)!</div>
+          <div class="f"><span class="lbl">Permutation (n with repeats: n₁,n₂,…nₖ)</span>n! / (n₁!·n₂!·…·nₖ!)   where Σnᵢ=n</div>
+          <div class="f"><span class="lbl">Combination (unordered)</span>ₙCᵣ = n! / [r!(n−r)!]</div>
+          <p class="note">Order MATTERS → Permutation. Order DOESN'T matter → Combination.</p>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Ch.2 — Probability &amp; Event Rules</div>
+        <div class="sec-body">
+          <div class="f"><span class="lbl">Axioms</span>0 ≤ P(A) ≤ 1  |  P(∅)=0  |  P(S)=1</div>
+          <div class="f"><span class="lbl">Equally Likely</span>P(A) = n/N</div>
+          <div class="f"><span class="lbl">Additive Rule</span>P(A∪B) = P(A)+P(B)−P(A∩B)</div>
+          <div class="f"><span class="lbl">Mutually Exclusive: P(A∩B)=0</span>P(A∪B) = P(A)+P(B)</div>
+          <div class="f"><span class="lbl">3-Event Inclusion-Exclusion</span>P(A∪B∪C)=P(A)+P(B)+P(C)
+ −P(A∩B)−P(A∩C)−P(B∩C)
+ +P(A∩B∩C)</div>
+          <div class="f"><span class="lbl">Complement</span>P(A') = 1 − P(A)</div>
+          <div class="f"><span class="lbl">DeMorgan's Laws</span>(A∪B)' = A'∩B'   |   (A∩B)' = A'∪B'</div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Ch.2 — Conditional &amp; Independence</div>
+        <div class="sec-body">
+          <div class="f"><span class="lbl">Conditional Probability</span>P(B|A) = P(A∩B) / P(A)   [P(A)>0]</div>
+          <div class="f"><span class="lbl">Product Rule (General)</span>P(A∩B) = P(A)·P(B|A)</div>
+          <div class="f"><span class="lbl">Independent Events — any ONE is sufficient</span>P(A|B)=P(A)  OR  P(B|A)=P(B)
+P(A∩B) = P(A)·P(B)</div>
+          <div class="f"><span class="lbl">Multiple Independent Events</span>P(∩ Eᵢ) = P(E₁)·P(E₂)·…·P(Eₖ)</div>
+          <div class="f"><span class="lbl">Bayes' Theorem</span>P(Aᵢ|B) = P(B|Aᵢ)P(Aᵢ) / ΣP(B|Aⱼ)P(Aⱼ)</div>
+          <div class="f"><span class="lbl">Series System</span>P(works) = P(A)·P(B)·P(C)···</div>
+          <div class="f"><span class="lbl">Parallel System</span>P(fails) = P(A fails)·P(B fails)···</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COL 2: Ch3 + Ch4 -->
+    <div class="col">
+      <div class="sec">
+        <div class="sec-title">Ch.3 — Random Variables &amp; Distributions</div>
+        <div class="sec-body">
+          <p class="note">Discrete RV: counting (finite/countable range)</p>
+          <p class="note">Continuous RV: measuring (interval range)</p>
+          <div class="f"><span class="lbl">PMF Properties</span>f(x)≥0  |  Σf(x)=1  |  f(x)=P(X=x)</div>
+          <div class="f"><span class="lbl">CDF (Discrete)</span>F(x)=P(X≤x)=Σ_{xᵢ≤x} f(xᵢ)
+P(a&lt;X≤b)=F(b)−F(a)</div>
+          <div class="f"><span class="lbl">PDF Properties (Continuous)</span>f(x)≥0  |  ∫f(x)dx=1  |  P(X=c)=0</div>
+          <div class="f"><span class="lbl">CDF (Continuous)</span>F(x)=∫₋∞^x f(t)dt  |  f(x)=F'(x)
+P(a&lt;X&lt;b)=F(b)−F(a)</div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Ch.4 — Mathematical Expectation</div>
+        <div class="sec-body">
+          <div class="f"><span class="lbl">Mean (Expected Value)</span>Discrete:   μ=E(X)=Σ x·f(x)
+Continuous: μ=E(X)=∫x·f(x)dx</div>
+          <div class="f"><span class="lbl">E of a function g(X)</span>E[g(X)] = Σ g(x)f(x)  [discrete]</div>
+          <div class="f"><span class="lbl">Variance — USE THIS FORMULA</span>σ²= E(X²) − μ²   ← shortcut!
+σ²= Σ(x−μ)²f(x)   ← definition</div>
+          <div class="f"><span class="lbl">Standard Deviation</span>σ = √σ²</div>
+          <div class="f"><span class="lbl">Linear Combination Rules</span>E(aX+b) = aE(X)+b
+E(X±Y) = E(X)±E(Y)
+E(XY) = E(X)·E(Y)  [if independent]</div>
+          <div class="f"><span class="lbl">Variance Rules</span>Var(aX+b) = a²Var(X)
+Var(aX+bY) = a²V(X)+b²V(Y)  [indep.]</div>
+          <div class="f"><span class="lbl">Covariance</span>σ_XY = E(XY)−μX·μY
+If independent: σ_XY = 0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COL 3: Ch5 Discrete Dists -->
+    <div class="col">
+      <div class="sec">
+        <div class="sec-title">Ch.5 — Discrete Distributions</div>
+        <div class="sec-body">
+          <table>
+            <tr>
+              <th>Distribution</th>
+              <th>PMF  f(x)</th>
+              <th>μ</th>
+              <th>σ²</th>
+            </tr>
+            <tr>
+              <td><b>Uniform</b><br>x=a…b</td>
+              <td>1/(b−a+1)</td>
+              <td>(a+b)/2</td>
+              <td>[(b−a+1)²−1]/12</td>
+            </tr>
+            <tr>
+              <td><b>Binomial</b><br>x=0..n</td>
+              <td>C(n,x)pˣ(1−p)ⁿ⁻ˣ</td>
+              <td>np</td>
+              <td>np(1−p)</td>
+            </tr>
+            <tr>
+              <td><b>Hypergeometric</b><br>x=0..min(k,n)</td>
+              <td>C(k,x)C(N−k,n−x)/C(N,n)</td>
+              <td>nk/N</td>
+              <td>n(k/N)(1−k/N)(N−n)/(N−1)</td>
+            </tr>
+            <tr>
+              <td><b>Geometric</b><br>x=1,2,3…</td>
+              <td>p(1−p)^(x−1)</td>
+              <td>1/p</td>
+              <td>(1−p)/p²</td>
+            </tr>
+            <tr>
+              <td><b>Neg. Binomial</b><br>x=k,k+1…</td>
+              <td>C(x−1,k−1)pᵏ(1−p)^(x−k)</td>
+              <td>k/p</td>
+              <td>k(1−p)/p²</td>
+            </tr>
+            <tr>
+              <td><b>Poisson</b><br>x=0,1,2…</td>
+              <td>e⁻λ·λˣ/x!</td>
+              <td>λ</td>
+              <td>λ</td>
+            </tr>
+          </table>
+
+          <p class="note" style="margin-top:3px"><b>Binomial conditions:</b> fixed n, binary, constant p, independent.</p>
+          <p class="note"><b>Hypergeometric:</b> sampling WITHOUT replacement from finite N. Variables: N=total, k=success in pop, n=sample.</p>
+          <p class="note"><b>Geometric:</b> # trials until FIRST success. <b>Neg Binomial:</b> # trials until k-th success.</p>
+          <p class="note"><b>Poisson scaling:</b> if rate=λ per unit, over t units → use μ=λt.</p>
+          <p class="note"><b>Poisson ≈ Binomial</b> when n large, p small: use λ=np.</p>
+          <p class="note"><b>Hypergeometric ≈ Binomial</b> when n/N ≤ 0.05: use p=k/N.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end grid -->
+</div><!-- end page 1 -->
+
+<!-- ████████████████████ PAGE 2 ████████████████████ -->
+<div class="page">
+  <div class="hdr">
+    <h1>IE0121 Probability &amp; Statistics — FINAL EXAM FORMULA SHEET</h1>
+    <span>Continuous Distributions + Key Identities + Exam Strategies | Page 2 of 2</span>
+  </div>
+
+  <div class="grid2">
+
+    <!-- COL 1: Ch6 Distributions -->
+    <div class="col">
+      <div class="sec">
+        <div class="sec-title">Ch.6 — Continuous Uniform Distribution (6.1)</div>
+        <div class="sec-body">
+          <div class="f"><span class="lbl">PDF</span>f(x) = 1/(B−A)   for A ≤ x ≤ B,  else 0</div>
+          <div class="f"><span class="lbl">Mean &amp; Variance</span>μ = (A+B)/2     σ² = (B−A)²/12</div>
+          <div class="f"><span class="lbl">CDF</span>F(x)=0           x&lt;A
+F(x)=(x−A)/(B−A)  A≤x≤B
+F(x)=1            x&gt;B</div>
+          <div class="f"><span class="lbl">Probability of interval</span>P(a&lt;X&lt;b) = (b−a)/(B−A)</div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Ch.6 — Normal Distribution (6.2–6.4)</div>
+        <div class="sec-body">
+          <div class="f"><span class="lbl">PDF  X~N(μ,σ²)</span>n(x;μ,σ)=[1/√(2πσ²)]·exp[−(x−μ)²/(2σ²)]</div>
+          <div class="f"><span class="lbl">Standardize X to Z</span>Z = (X − μ) / σ     where Z~N(0,1)</div>
+          <div class="f"><span class="lbl">Using Z-Table  [table gives Φ(z)=P(Z&lt;z)]</span>P(X&lt;x)    = Φ(z)
+P(X&gt;x)    = 1 − Φ(z)
+P(a&lt;X&lt;b) = Φ(z₂) − Φ(z₁)
+Φ(−z)     = 1 − Φ(z)   [symmetry]</div>
+          <p class="note">Properties: symmetric, bell-shaped, mean=median=mode=μ, total area=1, asymptotic tails.</p>
+          <p class="note" style="margin-top:3px">Normal table lookup process: (1) Compute z=(x−μ)/σ. (2) Look up Φ(z). (3) Apply rule above.</p>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Ch.6 — Exponential Distribution (6.6)</div>
+        <div class="sec-body">
+          <div class="f"><span class="lbl">Definition: Time between Poisson events (rate λ)</span>f(x) = λ·e^(−λx)   for x ≥ 0</div>
+          <div class="f"><span class="lbl">CDF</span>F(x) = P(X≤x) = 1 − e^(−λx)
+P(X&gt;x) = e^(−λx)</div>
+          <div class="f"><span class="lbl">Mean &amp; Variance</span>μ = 1/λ     σ² = 1/λ²     σ = 1/λ = μ</div>
+          <div class="f"><span class="lbl">Lack of Memory Property</span>P(X&lt;t₁+t₂ | X&gt;t₁) = P(X&lt;t₂)
+"Past waiting time is irrelevant."</div>
+          <p class="note">Poisson: mean = variance = λ. Exponential: mean = std dev = 1/λ.</p>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">⚠ NOT ON FINAL EXAM</div>
+        <div class="sec-body">
+          <div class="warn">Chapter 1 (Intro Statistics) and Section 6.5 (Normal Approximation to Binomial) are EXCLUDED from the final exam.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COL 2: Key Strategies + Quick-Reference -->
+    <div class="col">
+      <div class="sec">
+        <div class="sec-title">Choosing the Right Distribution</div>
+        <div class="sec-body">
+          <table>
+            <tr><th>Question Keywords</th><th>Distribution</th></tr>
+            <tr><td>"n trials, probability p, how many successes"</td><td><b>Binomial</b></td></tr>
+            <tr><td>"without replacement, finite population"</td><td><b>Hypergeometric</b></td></tr>
+            <tr><td>"first success", "how many trials until"</td><td><b>Geometric</b></td></tr>
+            <tr><td>"k-th success", "r-th occurrence"</td><td><b>Neg. Binomial</b></td></tr>
+            <tr><td>"rate per time/area", "arrivals", "defects per unit"</td><td><b>Poisson</b></td></tr>
+            <tr><td>"equally likely", "each value same prob"</td><td><b>Discrete Uniform</b></td></tr>
+            <tr><td>"flat density", "uniform over interval [A,B]"</td><td><b>Cont. Uniform</b></td></tr>
+            <tr><td>"bell shaped", "normally distributed"</td><td><b>Normal</b></td></tr>
+            <tr><td>"time between events", "waiting time", "Poisson process"</td><td><b>Exponential</b></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Exam Strategy Checklist</div>
+        <div class="sec-body">
+          <p class="note"><b>Probability problems:</b></p>
+          <p class="note">• "OR" statement → Additive rule: P(A∪B)=P(A)+P(B)−P(A∩B)</p>
+          <p class="note">• "AND" statement → Product rule: P(A∩B)=P(A)·P(B|A)</p>
+          <p class="note">• "At least one" → Use complement: 1−P(none)</p>
+          <p class="note">• "Given that" → Conditional probability</p>
+          <p class="note" style="margin-top:3px"><b>Distribution identification:</b></p>
+          <p class="note">• Check: with or without replacement? → Hyper vs Binomial</p>
+          <p class="note">• Check: fixed n or wait for success? → Binomial vs Geometric/NegBin</p>
+          <p class="note">• Check: n/N ≤ 0.05? → Use Binomial to approximate Hypergeometric</p>
+          <p class="note">• Check: n large + p small? → Use Poisson (λ=np) for Binomial</p>
+          <p class="note" style="margin-top:3px"><b>Expectation problems:</b></p>
+          <p class="note">• Use shortcut: σ² = E(X²) − [E(X)]²</p>
+          <p class="note">• For linear combos: Var(aX+b) = a²Var(X) — constant b adds nothing</p>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Critical Identities &amp; Relationships</div>
+        <div class="sec-body">
+          <div class="f"><span class="lbl">Complement + Union link</span>P(A'∩B') = 1 − P(A∪B)   [DeMorgan]</div>
+          <div class="f"><span class="lbl">Partition of B</span>P(A'∩B) = P(B) − P(A∩B)</div>
+          <div class="f"><span class="lbl">Partition of A</span>P(A∩B') = P(A) − P(A∩B)</div>
+          <div class="f"><span class="lbl">Independence test</span>P(D|F)=P(D) → D and F independent
+P(D|F)≠P(D) → D and F dependent</div>
+          <div class="f"><span class="lbl">Poisson ↔ Exponential relationship</span>Poisson counts events at rate λ
+Exponential measures TIME between events
+Both use the SAME λ parameter</div>
+          <div class="f"><span class="lbl">Geometric = Neg. Binomial with k=1</span>g(x;p) = b*(x;1,p)</div>
+          <div class="f"><span class="lbl">CDF range trick</span>P(a&lt;X≤b) = F(b) − F(a)
+P(X=x) [discrete] = F(x) − F(x−1)</div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">All Distribution Mean &amp; Variance — Quick View</div>
+        <div class="sec-body">
+          <table>
+            <tr><th>Distribution</th><th>μ</th><th>σ²</th></tr>
+            <tr><td>Discrete Uniform(a,b)</td><td>(a+b)/2</td><td>[(b−a+1)²−1]/12</td></tr>
+            <tr><td>Binomial(n,p)</td><td>np</td><td>np(1−p)</td></tr>
+            <tr><td>Hypergeometric(N,k,n)</td><td>nk/N</td><td>n·(k/N)·(1−k/N)·(N−n)/(N−1)</td></tr>
+            <tr><td>Geometric(p)</td><td>1/p</td><td>(1−p)/p²</td></tr>
+            <tr><td>Neg Binomial(k,p)</td><td>k/p</td><td>k(1−p)/p²</td></tr>
+            <tr><td>Poisson(λ)</td><td>λ</td><td>λ</td></tr>
+            <tr><td>Uniform(A,B)</td><td>(A+B)/2</td><td>(B−A)²/12</td></tr>
+            <tr><td>Normal(μ,σ²)</td><td>μ</td><td>σ²</td></tr>
+            <tr><td>Exponential(λ)</td><td>1/λ</td><td>1/λ²</td></tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- end grid2 -->
+</div><!-- end page 2 -->
+
+</body>
+</html>

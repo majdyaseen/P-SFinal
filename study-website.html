@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IE0121 — Probability & Statistics | Final Exam Study Guide</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d27;
+    --card2: #1e2130;
+    --border: #2e3347;
+    --accent: #5b8dee;
+    --accent2: #7c5cbf;
+    --accent3: #3eb489;
+    --accent4: #e8833a;
+    --accent5: #e05c7e;
+    --text: #e8eaf0;
+    --muted: #8a90a8;
+    --formula: #12161f;
+    --formula-border: #3a4060;
+    --highlight: rgba(91,141,238,0.13);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15,17,23,0.97);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    padding: 0 2rem;
+    display: flex; align-items: center; gap: 0;
+    overflow-x: auto;
+  }
+  nav a {
+    color: var(--muted); text-decoration: none;
+    padding: 1rem 1.1rem; font-size: 0.85rem; font-weight: 500;
+    white-space: nowrap; border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  nav a:hover { color: var(--text); border-color: var(--accent); }
+  nav .brand { color: var(--accent); font-weight: 700; font-size: 1rem; margin-right: 1.5rem; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0f1117 0%, #151929 50%, #0f1117 100%);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(120deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { color: var(--muted); margin-top: 0.8rem; font-size: 1.1rem; }
+  .badge { display: inline-block; background: rgba(62,180,137,0.15); color: var(--accent3); border: 1px solid rgba(62,180,137,0.3); border-radius: 20px; padding: 0.3rem 1rem; font-size: 0.8rem; margin-top: 1rem; }
+
+  /* LAYOUT */
+  main { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+  section { margin-bottom: 4rem; }
+  .chapter-header {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.5rem 2rem; border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+  }
+  .ch2 { background: linear-gradient(135deg, rgba(91,141,238,0.15), rgba(91,141,238,0.05)); border-top: 3px solid var(--accent); }
+  .ch3 { background: linear-gradient(135deg, rgba(124,92,191,0.15), rgba(124,92,191,0.05)); border-top: 3px solid var(--accent2); }
+  .ch4 { background: linear-gradient(135deg, rgba(62,180,137,0.15), rgba(62,180,137,0.05)); border-top: 3px solid var(--accent3); }
+  .ch5 { background: linear-gradient(135deg, rgba(232,131,58,0.15), rgba(232,131,58,0.05)); border-top: 3px solid var(--accent4); }
+  .ch6 { background: linear-gradient(135deg, rgba(224,92,126,0.15), rgba(224,92,126,0.05)); border-top: 3px solid var(--accent5); }
+  .chapter-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; }
+  .chapter-header h2 { font-size: 1.6rem; font-weight: 700; }
+  .chapter-body { background: var(--card); border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; padding: 2rem; }
+
+  /* TOPICS */
+  .topic { margin-bottom: 2rem; border-left: 3px solid var(--border); padding-left: 1.5rem; }
+  .topic h3 { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.8rem; }
+  .topic p { color: #c5c9d8; margin-bottom: 0.6rem; }
+
+  /* FORMULA BOXES */
+  .formula-box {
+    background: var(--formula); border: 1px solid var(--formula-border);
+    border-radius: 8px; padding: 1rem 1.4rem; margin: 0.8rem 0;
+    font-family: 'Courier New', monospace; font-size: 0.95rem;
+    color: #a8d4ff; line-height: 1.9;
+  }
+  .formula-box .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); display: block; margin-bottom: 0.4rem; font-family: 'Segoe UI', sans-serif; }
+  .formula-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 0.8rem 0; }
+  .formula-row .formula-box { flex: 1; min-width: 200px; }
+
+  /* EXAMPLES */
+  .example {
+    background: var(--card2); border: 1px solid var(--border);
+    border-radius: 10px; margin: 1rem 0; overflow: hidden;
+  }
+  .example-header {
+    background: rgba(255,255,255,0.04); padding: 0.7rem 1.2rem;
+    font-size: 0.82rem; font-weight: 600; color: var(--muted);
+    letter-spacing: 0.5px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .example-header span { background: var(--accent); color: #fff; border-radius: 4px; padding: 0.1rem 0.5rem; font-size: 0.72rem; }
+  .example-header span.sol { background: var(--accent3); }
+  .example-body { padding: 1rem 1.2rem; }
+  .example-body p { color: #c5c9d8; margin-bottom: 0.5rem; }
+  .solution { background: rgba(62,180,137,0.06); border-left: 3px solid var(--accent3); border-radius: 0 8px 8px 0; padding: 1rem 1.2rem; margin-top: 0.8rem; }
+  .solution p { margin-bottom: 0.4rem; color: #c5c9d8; }
+  .answer { font-family: 'Courier New', monospace; color: #7ee8a2; font-weight: 700; font-size: 1rem; margin-top: 0.5rem; }
+
+  /* DISTRIBUTION CARDS */
+  .dist-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem; margin-top: 1rem; }
+  .dist-card { background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; }
+  .dist-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.8rem; color: var(--text); }
+  .dist-card .tag { display: inline-block; font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 4px; margin-right: 0.3rem; margin-bottom: 0.6rem; font-weight: 600; }
+  .tag-disc { background: rgba(91,141,238,0.2); color: #8ab4ff; }
+  .tag-cont { background: rgba(224,92,126,0.2); color: #f0a0b8; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+  th { background: rgba(255,255,255,0.05); color: var(--muted); font-weight: 600; padding: 0.6rem 1rem; text-align: left; border-bottom: 2px solid var(--border); }
+  td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--border); color: #c5c9d8; font-family: 'Courier New', monospace; font-size: 0.85rem; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* KEY INSIGHT */
+  .insight { background: var(--highlight); border: 1px solid rgba(91,141,238,0.3); border-radius: 8px; padding: 0.9rem 1.2rem; margin: 0.8rem 0; }
+  .insight p { color: #b0c4f8; margin: 0; font-size: 0.93rem; }
+  .insight strong { color: var(--accent); }
+
+  /* WARNING */
+  .warn { background: rgba(232,131,58,0.1); border: 1px solid rgba(232,131,58,0.3); border-radius: 8px; padding: 0.9rem 1.2rem; margin: 0.8rem 0; }
+  .warn p { color: #f4b87a; margin: 0; font-size: 0.93rem; }
+
+  /* STEPS */
+  .steps { counter-reset: step; }
+  .step { display: flex; gap: 1rem; margin-bottom: 0.8rem; align-items: flex-start; }
+  .step-num { background: var(--accent); color: #fff; border-radius: 50%; width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; margin-top: 2px; }
+  .step-body { color: #c5c9d8; font-size: 0.93rem; }
+
+  /* SERIES / PARALLEL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.8rem; }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } .hero h1 { font-size: 1.8rem; } }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  ul { padding-left: 1.5rem; color: #c5c9d8; }
+  ul li { margin-bottom: 0.3rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">IE0121</span>
+  <a href="#ch2">Ch.2 Probability</a>
+  <a href="#ch3">Ch.3 RVs &amp; Dists</a>
+  <a href="#ch4">Ch.4 Expectation</a>
+  <a href="#ch5">Ch.5 Discrete Dists</a>
+  <a href="#ch6">Ch.6 Continuous Dists</a>
+</nav>
+
+<div class="hero">
+  <h1>Probability &amp; Statistics</h1>
+  <p>IE0121 — Complete Final Exam Study Guide | German Jordanian University</p>
+  <div class="badge">Chapters 2 · 3 · 4 · 5 · 6 (excl. 6.5) — All Formulas · All Examples · All Solutions</div>
+</div>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════ CHAPTER 2 ═══ -->
+<section id="ch2">
+  <div class="chapter-header ch2">
+    <div>
+      <div class="chapter-num">Chapter 2</div>
+      <h2>Probability</h2>
+    </div>
+  </div>
+  <div class="chapter-body">
+
+    <!-- 2.1 Sample Space -->
+    <div class="topic">
+      <h3>2.1 — Sample Space</h3>
+      <p><strong>Experiment:</strong> Any process that generates a set of data.</p>
+      <p><strong>Sample Space S:</strong> The set of ALL possible outcomes of a statistical experiment.</p>
+      <p><strong>Sample Point:</strong> Each individual outcome in the sample space.</p>
+      <ul>
+        <li><strong>Discrete S</strong> — finite or countably infinite outcomes (e.g., coin toss: {H, T})</li>
+        <li><strong>Continuous S</strong> — an interval of real numbers (e.g., recycle time: S = {x | 1.5 &lt; x &lt; 5})</li>
+      </ul>
+      <div class="example">
+        <div class="example-header"><span>Example 2.1</span> Sample Space — Coin + Die</div>
+        <div class="example-body">
+          <p>Flip a coin; if HEAD flip again; if TAIL toss a die.</p>
+          <div class="solution">
+            <p><strong>S = {HH, HT, T1, T2, T3, T4, T5, T6}</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example 2.2</span> Sample Space — 3 Messages</div>
+        <div class="example-body">
+          <p>Messages classified as on-time (o) or late (l). Classify the next 3 messages.</p>
+          <div class="solution">
+            <p><strong>S = {ooo, ool, olo, oll, loo, lol, llo, lll}</strong> — 2³ = 8 outcomes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.2 Events -->
+    <div class="topic">
+      <h3>2.2 — Events</h3>
+      <p>An <strong>event</strong> is any subset of the sample space S.</p>
+      <div class="formula-row">
+        <div class="formula-box"><span class="label">Union (OR)</span>A ∪ B = all outcomes in A OR B (or both)</div>
+        <div class="formula-box"><span class="label">Intersection (AND)</span>A ∩ B = all outcomes in BOTH A AND B</div>
+        <div class="formula-box"><span class="label">Complement (NOT)</span>A' = all outcomes in S that are NOT in A</div>
+      </div>
+      <p style="margin-top:0.8rem"><strong>Mutually Exclusive:</strong> A ∩ B = ∅ → events cannot occur simultaneously.</p>
+      <div class="formula-box">
+        <span class="label">Event Laws</span>
+        Commutative:   A ∩ B = B ∩ A,   A ∪ B = B ∪ A<br>
+        Distributive:  (A ∪ B) ∩ C = (A ∩ C) ∪ (B ∩ C)<br>
+        Associative:   (A ∪ B) ∪ C = A ∪ (B ∪ C)<br>
+        DeMorgan's:    (A ∪ B)' = A' ∩ B'   and   (A ∩ B)' = A' ∪ B'<br>
+        Complement:    (A')' = A
+      </div>
+    </div>
+
+    <!-- 2.3 Counting -->
+    <div class="topic">
+      <h3>2.3 — Counting Sample Points</h3>
+
+      <h4 style="color:var(--accent);margin-bottom:0.5rem">① Multiplication Rule</h4>
+      <div class="formula-box">
+        <span class="label">Total ways for k steps</span>
+        n₁ × n₂ × n₃ × ··· × nₖ
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example</span> Computer Assembly</div>
+        <div class="example-body">
+          <p>Sam chooses: 2 chips × 4 hard drives × 3 memory × 5 accessories.</p>
+          <div class="solution"><div class="answer">2 × 4 × 3 × 5 = 120 ways</div></div>
+        </div>
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example</span> License Plates (letters repeated)</div>
+        <div class="example-body">
+          <p>3 letters followed by 3 digits. (a) Repetition allowed. (b) Not allowed.</p>
+          <div class="solution">
+            <p>(a) 26³ × 10³ = <strong>17,576,000</strong></p>
+            <p>(b) 26 × 25 × 24 × 10 × 9 × 8 = <strong>11,232,000</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color:var(--accent);margin:1rem 0 0.5rem">② Permutations (Order Matters)</h4>
+      <div class="formula-row">
+        <div class="formula-box"><span class="label">All n distinct objects</span>n! = n × (n-1) × (n-2) × ··· × 1</div>
+        <div class="formula-box"><span class="label">n objects taken r at a time</span>ₙPᵣ = n! / (n − r)!</div>
+        <div class="formula-box"><span class="label">n objects with repeats (n₁,n₂,...,nₖ)</span>n! / (n₁! × n₂! × ··· × nₖ!)</div>
+      </div>
+      <div class="insight"><p><strong>Use permutations when ORDER MATTERS</strong> — passwords, rankings, scheduling, arrangements.</p></div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> License Plate — Hit &amp; Run</div>
+        <div class="example-body">
+          <p>Plates: RLS4 _ _ _  (last 3 digits different, first digit fixed as 4; remaining pool: 0–9 except 4 = 9 digits)</p>
+          <div class="solution"><div class="answer">₉P₃ = 9! / 6! = 9 × 8 × 7 = 504</div></div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> ENGINEERING (indistinguishable letters)</div>
+        <div class="example-body">
+          <p>11 letters: E×3, N×3, G×2, I×2, R×1. Total distinct arrangements?</p>
+          <div class="solution">
+            <p>S = 11! / (3! × 3! × 2! × 2! × 1!) = 39,916,800 / 144 = <strong>277,200</strong></p>
+            <p>P(spelling ENGINEERING) = 1 / 277,200 ≈ <strong>0.00036%</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color:var(--accent);margin:1rem 0 0.5rem">③ Combinations (Order Does NOT Matter)</h4>
+      <div class="formula-box">
+        <span class="label">n objects choose r</span>
+        ₙCᵣ = C(n,r) = n! / (r! × (n − r)!)
+      </div>
+      <div class="insight"><p><strong>Use combinations when ORDER DOESN'T MATTER</strong> — committees, selections, groups, hands of cards.</p></div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> Club Committee</div>
+        <div class="example-body">
+          <p>A club has 9 members. How many committees of 3 can be formed?</p>
+          <div class="solution"><div class="answer">C(9,3) = 9! / (3! × 6!) = 84</div></div>
+        </div>
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example</span> Defective Parts</div>
+        <div class="example-body">
+          <p>From a bin of 50 parts (3 defective, 47 non-defective), 6 are selected randomly. P(exactly 2 defective)?</p>
+          <div class="solution">
+            <p>Total ways = C(50,6) = 15,890,700</p>
+            <p>Favorable = C(3,2) × C(47,4) = 3 × 178,365 = 535,095</p>
+            <div class="answer">P = 535,095 / 15,890,700 ≈ 0.0337</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.4 Probability -->
+    <div class="topic">
+      <h3>2.4 — Probability of an Event</h3>
+      <div class="formula-row">
+        <div class="formula-box"><span class="label">Axioms</span>0 ≤ P(A) ≤ 1  |  P(∅) = 0  |  P(S) = 1</div>
+        <div class="formula-box"><span class="label">Equally Likely Outcomes</span>P(A) = (# outcomes in A) / (total # outcomes N)</div>
+      </div>
+    </div>
+
+    <!-- 2.5 Additive Rules -->
+    <div class="topic">
+      <h3>2.5 — Additive Rules</h3>
+      <div class="formula-box">
+        <span class="label">General (2 events)</span>
+        P(A ∪ B) = P(A) + P(B) − P(A ∩ B)<br><br>
+        <span class="label">Mutually Exclusive</span>
+        P(A ∪ B) = P(A) + P(B)         [since P(A ∩ B) = 0]<br><br>
+        <span class="label">Three events (Inclusion-Exclusion)</span>
+        P(A ∪ B ∪ C) = P(A) + P(B) + P(C) − P(A∩B) − P(A∩C) − P(B∩C) + P(A∩B∩C)<br><br>
+        <span class="label">Complement Rule</span>
+        P(A') = 1 − P(A)
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 2.31</span> Automobile Colors</div>
+        <div class="example-body">
+          <p>P(green)=0.09, P(white)=0.15, P(red)=0.21, P(blue)=0.23. P(one of these colors)?</p>
+          <div class="solution">
+            <p>Events are mutually exclusive:</p>
+            <div class="answer">P = 0.09 + 0.15 + 0.21 + 0.23 = 0.68</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 2.33</span> Cable Specifications</div>
+        <div class="example-body">
+          <p>Spec: 2000 ± 10 mm. P(meets spec) = 0.99. P(too large) = P(too small).</p>
+          <p>(a) P(cable too large)?   (b) P(larger than 1990 mm)?</p>
+          <div class="solution">
+            <p>(a) P(too large) = P(too small) → 2P(too large) = 1 − 0.99 = 0.01</p>
+            <div class="answer">(a) P(too large) = 0.005</div>
+            <div class="answer">(b) P(x > 1990) = P(meets spec) + P(too large) = 0.99 + 0.005 = 0.995</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> Combined Probability — P(A)=0.5, P(B)=0.4, P(A'∩B')=0.2</div>
+        <div class="example-body">
+          <p>Find: (a) P(A∪B), (b) P(A∩B), (c) P(A'∩B), (d) P(A∩B')</p>
+          <div class="solution">
+            <p>(a) P(A∪B) = 1 − P(A'∩B') = 1 − 0.2 = <strong>0.8</strong></p>
+            <p>(b) P(A∩B) = P(A) + P(B) − P(A∪B) = 0.5 + 0.4 − 0.8 = <strong>0.1</strong></p>
+            <p>(c) P(A'∩B) = P(B) − P(A∩B) = 0.4 − 0.1 = <strong>0.3</strong></p>
+            <p>(d) P(A∩B') = P(A) − P(A∩B) = 0.5 − 0.1 = <strong>0.4</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.6 Conditional Probability -->
+    <div class="topic">
+      <h3>2.6 — Conditional Probability, Independence &amp; Product Rule</h3>
+      <div class="formula-box">
+        <span class="label">Conditional Probability</span>
+        P(B | A) = P(A ∩ B) / P(A)       [P(A) > 0]<br><br>
+        <span class="label">Product Rule (General)</span>
+        P(A ∩ B) = P(A) × P(B | A) = P(B) × P(A | B)<br><br>
+        <span class="label">Independence — ALL three equivalent</span>
+        P(A | B) = P(A)   OR   P(B | A) = P(B)   OR   P(A ∩ B) = P(A)·P(B)<br><br>
+        <span class="label">Multiple Independent Events</span>
+        P(E₁ ∩ E₂ ∩ ··· ∩ Eₖ) = P(E₁) × P(E₂) × ··· × P(Eₖ)
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 2.34</span> Flight Departure/Arrival</div>
+        <div class="example-body">
+          <p>P(D)=0.83, P(A)=0.82, P(D∩A)=0.78</p>
+          <p>(a) P(A|D)?   (b) P(D|A)?</p>
+          <div class="solution">
+            <div class="answer">(a) P(A|D) = 0.78/0.83 ≈ 0.9398</div>
+            <div class="answer">(b) P(D|A) = 0.78/0.82 ≈ 0.9512</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> Two Children — Both Boys Given At Least One Boy</div>
+        <div class="example-body">
+          <p>S = {gg, gb, bg, bb}. A = at least one boy = {gb, bg, bb}. B = both boys = {bb}.</p>
+          <div class="solution">
+            <p>P(A∩B) = P({bb}) = 1/4,   P(A) = 3/4</p>
+            <div class="answer">P(B|A) = (1/4)/(3/4) = 1/3</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> Two-Stage Machining</div>
+        <div class="example-body">
+          <p>P(meets spec stage 1) = 0.90. P(meets stage 2 | meets stage 1) = 0.95. P(both)?</p>
+          <div class="solution">
+            <div class="answer">P(A∩B) = 0.95 × 0.90 = 0.855</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> 15 Wafers — No Large Particles</div>
+        <div class="example-body">
+          <p>P(wafer has no large particle) = 0.99. Wafers independent. P(none in 15)?</p>
+          <div class="solution">
+            <div class="answer">P = (0.99)¹⁵ = 0.860</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> Two Bags — Drawing Black Ball</div>
+        <div class="example-body">
+          <p>Bag 1: 3 black, 4 white. Pick 1 from bag 1 and place in bag 2 (bag 2 had 6 black, 3 white → now 10 balls). Find P(black from bag 2).</p>
+          <div class="solution">
+            <p>P(B₂) = P(B₁)·P(B₂|B₁) + P(W₁)·P(B₂|W₁)</p>
+            <p>= (3/7)(6/9) + (4/7)(5/9) = 18/63 + 20/63</p>
+            <div class="answer">= 38/63 ≈ 0.603</div>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="color:var(--accent);margin:1rem 0 0.5rem">Series vs. Parallel Systems</h4>
+      <div class="two-col">
+        <div class="dist-card">
+          <h4>Series System</h4>
+          <p style="color:var(--muted);font-size:0.88rem">ALL components must work. Fails if ANY one fails.</p>
+          <div class="formula-box">P(system works) = P(A) × P(B) × ···</div>
+          <p style="color:#c5c9d8;font-size:0.85rem">Reliability always <em>decreases</em> with more components.</p>
+        </div>
+        <div class="dist-card">
+          <h4>Parallel System</h4>
+          <p style="color:var(--muted);font-size:0.88rem">Fails only if ALL components fail. Works if ANY one works.</p>
+          <div class="formula-box">P(system fails) = P(A fails) × P(B fails) × ···</div>
+          <p style="color:#c5c9d8;font-size:0.85rem">Reliability always <em>increases</em> with more components.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.7 Bayes' Rule -->
+    <div class="topic">
+      <h3>2.7 — Bayes' Rule</h3>
+      <div class="formula-box">
+        <span class="label">Total Probability</span>
+        P(B) = P(B|A₁)P(A₁) + P(B|A₂)P(A₂) + ··· + P(B|Aₙ)P(Aₙ)<br><br>
+        <span class="label">Bayes' Theorem</span>
+        P(Aᵢ|B) = P(B|Aᵢ)·P(Aᵢ) / [Σⱼ P(B|Aⱼ)·P(Aⱼ)]
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ CHAPTER 3 ═══ -->
+<section id="ch3">
+  <div class="chapter-header ch3">
+    <div>
+      <div class="chapter-num">Chapter 3</div>
+      <h2>Random Variables &amp; Probability Distributions</h2>
+    </div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="topic">
+      <h3>3.1 — Concept of a Random Variable</h3>
+      <p>A <strong>random variable</strong> is a function that assigns a real number to each outcome in the sample space.</p>
+      <ul>
+        <li><strong>Discrete RV</strong> — finite or countably infinite range; obtained by <em>counting</em> (e.g., # defectives, # heads)</li>
+        <li><strong>Continuous RV</strong> — an interval of real numbers for its range; obtained by <em>measuring</em> (e.g., voltage, weight, time)</li>
+      </ul>
+      <div class="example">
+        <div class="example-header"><span>Example 3-2</span> Wafer Testing</div>
+        <div class="example-body">
+          <p>2 wafers sampled, each passes with p=0.8, independent. X = # wafers passing.</p>
+          <div class="solution">
+            <table>
+              <tr><th>Outcome</th><th>x</th><th>P</th></tr>
+              <tr><td>FF</td><td>0</td><td>0.04</td></tr>
+              <tr><td>FP or PF</td><td>1</td><td>0.32</td></tr>
+              <tr><td>PP</td><td>2</td><td>0.64</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic">
+      <h3>3.2 — Discrete Probability Distributions</h3>
+      <div class="formula-box">
+        <span class="label">Probability Mass Function (PMF) — f(x) = P(X = x)</span>
+        (1) f(x) ≥ 0 for all x<br>
+        (2) Σ f(x) = 1<br>
+        (3) P(X = x) = f(x)
+      </div>
+      <div class="formula-box">
+        <span class="label">Cumulative Distribution Function (CDF)</span>
+        F(x) = P(X ≤ x) = Σ_{xᵢ ≤ x} f(xᵢ)<br><br>
+        Properties: 0 ≤ F(x) ≤ 1  |  Non-decreasing<br>
+        P(a &lt; X ≤ b) = F(b) − F(a)
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example 3-4</span> Digital Channel — Bits in Error</div>
+        <div class="example-body">
+          <p>n=4 bits, p=0.1. X = # bits in error.</p>
+          <div class="solution">
+            <table>
+              <tr><th>x</th><th>P(X=x)</th><th>P(X≤x)</th></tr>
+              <tr><td>0</td><td>0.6561</td><td>0.6561</td></tr>
+              <tr><td>1</td><td>0.2916</td><td>0.9477</td></tr>
+              <tr><td>2</td><td>0.0486</td><td>0.9963</td></tr>
+              <tr><td>3</td><td>0.0036</td><td>0.9999</td></tr>
+              <tr><td>4</td><td>0.0001</td><td>1.0000</td></tr>
+            </table>
+            <p>P(X = 3) = P(X ≤ 3) − P(X ≤ 2) = 0.9999 − 0.9963 = <strong>0.0036</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example 3-8</span> Sampling Without Replacement</div>
+        <div class="example-body">
+          <p>850 parts: 50 defective, 800 non-defective. Select 2 without replacement. X = # defectives.</p>
+          <div class="solution">
+            <p>P(X=0) = (800/850)(799/849) = <strong>0.886</strong></p>
+            <p>P(X=1) = 2·(800/850)(50/849) = <strong>0.111</strong></p>
+            <p>P(X=2) = (50/850)(49/849) = <strong>0.003</strong></p>
+            <p>CDF: F(0)=0.886, F(1)=0.997, F(2)=1.000</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic">
+      <h3>3.3 — Continuous Probability Distributions</h3>
+      <div class="formula-box">
+        <span class="label">Probability Density Function (PDF) — f(x)</span>
+        (1) f(x) ≥ 0 for all x<br>
+        (2) ∫₋∞^∞ f(x) dx = 1<br>
+        (3) P(a &lt; X &lt; b) = ∫ₐ^b f(x) dx<br><br>
+        <span class="label">Note</span>
+        P(X = any single point) = 0   [for continuous RV]
+      </div>
+      <div class="formula-box">
+        <span class="label">CDF for Continuous RV</span>
+        F(x) = P(X ≤ x) = ∫₋∞^x f(t) dt<br>
+        f(x) = dF(x)/dx
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example 3.11</span> Temperature Error</div>
+        <div class="example-body">
+          <p>f(x) = x²/3 for −1 &lt; x &lt; 2,  0 elsewhere. Find P(0 &lt; X ≤ 1) and F(x).</p>
+          <div class="solution">
+            <p>P(0 &lt; X ≤ 1) = ∫₀¹ x²/3 dx = [x³/9]₀¹ = 1/9</p>
+            <p>F(x) = (x³ + 1) / 9  for −1 ≤ x &lt; 2</p>
+            <div class="answer">P(0 &lt; X ≤ 1) = 1/9 ≈ 0.111</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ CHAPTER 4 ═══ -->
+<section id="ch4">
+  <div class="chapter-header ch4">
+    <div>
+      <div class="chapter-num">Chapter 4</div>
+      <h2>Mathematical Expectation</h2>
+    </div>
+  </div>
+  <div class="chapter-body">
+
+    <div class="topic">
+      <h3>4.1 — Mean (Expected Value)</h3>
+      <div class="formula-box">
+        <span class="label">Expected Value of X</span>
+        Discrete:   μ = E(X) = Σ x · f(x)<br>
+        Continuous: μ = E(X) = ∫₋∞^∞ x · f(x) dx<br><br>
+        <span class="label">Expected Value of a Function g(X)</span>
+        Discrete:   E[g(X)] = Σ g(x) · f(x)<br>
+        Continuous: E[g(X)] = ∫₋∞^∞ g(x) · f(x) dx<br><br>
+        <span class="label">Two Variables g(X,Y)</span>
+        Discrete:   E[g(X,Y)] = ΣΣ g(x,y) · f(x,y)<br>
+        Continuous: E[g(X,Y)] = ∬ g(x,y) · f(x,y) dx dy
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example</span> Lot of 7 Components</div>
+        <div class="example-body">
+          <p>7 components: 4 good, 3 defective. Sample of 3. Find E(# good).</p>
+          <div class="solution">
+            <p>x can be 0, 1, 2, 3. Use hypergeometric probabilities.</p>
+            <div class="answer">E(X) = 12/7 ≈ 1.714</div>
+          </div>
+        </div>
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example 4.4</span> Car Wash (Discrete)</div>
+        <div class="example-body">
+          <p>X = # cars between 4–5pm. g(X) = 2X−1 = attendant pay in dollars.</p>
+          <table>
+            <tr><th>x</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr>
+            <tr><td>P(X=x)</td><td>1/12</td><td>1/12</td><td>1/4</td><td>1/4</td><td>1/6</td><td>1/6</td></tr>
+            <tr><td>g(x)=2x−1</td><td>7</td><td>9</td><td>11</td><td>13</td><td>15</td><td>17</td></tr>
+          </table>
+          <div class="solution">
+            <p>E[g(X)] = 7(1/12) + 9(1/12) + 11(1/4) + 13(1/4) + 15(1/6) + 17(1/6)</p>
+            <div class="answer">= $12.67</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic">
+      <h3>4.2 — Variance &amp; Covariance</h3>
+      <div class="formula-box">
+        <span class="label">Variance</span>
+        σ² = E[(X − μ)²] = E(X²) − μ²<br><br>
+        Discrete:   σ² = Σ (x − μ)² f(x)<br>
+        Continuous: σ² = ∫₋∞^∞ (x − μ)² f(x) dx<br><br>
+        <span class="label">Shortcut Formula</span>
+        σ² = E(X²) − [E(X)]²        ← use this one on exams!<br><br>
+        <span class="label">Standard Deviation</span>
+        σ = √σ²
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example 4.11</span> Find Variance</div>
+        <div class="example-body">
+          <table>
+            <tr><th>x</th><th>0</th><th>1</th><th>2</th><th>3</th></tr>
+            <tr><td>f(x)</td><td>1/4</td><td>1/8</td><td>1/2</td><td>1/8</td></tr>
+          </table>
+          <div class="solution">
+            <p>E(X) = 0(1/4) + 1(1/8) + 2(1/2) + 3(1/8) = 0 + 1/8 + 1 + 3/8 = 3/2</p>
+            <p>E(X²) = 0 + 1(1/8) + 4(1/2) + 9(1/8) = 1/8 + 2 + 9/8 = 19/8</p>
+            <div class="answer">σ² = 19/8 − (3/2)² = 19/8 − 9/4 = 1/8 = 0.125</div>
+          </div>
+        </div>
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example</span> Standard Deviation from Distribution</div>
+        <div class="example-body">
+          <table>
+            <tr><th>x</th><th>−2</th><th>3</th><th>5</th></tr>
+            <tr><td>f(x)</td><td>0.3</td><td>0.2</td><td>0.5</td></tr>
+          </table>
+          <div class="solution">
+            <p>E(X) = (−2)(0.3) + 3(0.2) + 5(0.5) = −0.6 + 0.6 + 2.5 = 2.5</p>
+            <p>E(X²) = 4(0.3) + 9(0.2) + 25(0.5) = 1.2 + 1.8 + 12.5 = 15.5</p>
+            <p>σ² = 15.5 − 2.5² = 15.5 − 6.25 = 9.25</p>
+            <div class="answer">σ = √9.25 ≈ 3.04</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic">
+      <h3>4.3 — Linear Combinations of Random Variables</h3>
+      <div class="formula-box">
+        <span class="label">Mean Rules</span>
+        E(aX + b) = aE(X) + b<br>
+        E(X ± Y) = E(X) ± E(Y)<br>
+        E(XY) = E(X)·E(Y)   [only if X and Y are INDEPENDENT]<br><br>
+        <span class="label">Variance Rules</span>
+        Var(aX + b) = a²·Var(X)   [constant b doesn't affect spread]<br>
+        Var(aX + bY) = a²Var(X) + b²Var(Y)   [only if X,Y INDEPENDENT]<br>
+        σ²(aX+b) = a²σ²<br><br>
+        <span class="label">Covariance</span>
+        σ_XY = E[(X−μX)(Y−μY)] = E(XY) − μX·μY<br>
+        If X and Y are independent: σ_XY = 0
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ CHAPTER 5 ═══ -->
+<section id="ch5">
+  <div class="chapter-header ch5">
+    <div>
+      <div class="chapter-num">Chapter 5</div>
+      <h2>Discrete Probability Distributions</h2>
+    </div>
+  </div>
+  <div class="chapter-body">
+
+    <!-- Summary Table -->
+    <div class="topic">
+      <h3>Quick Reference — All Discrete Distributions</h3>
+      <table>
+        <tr><th>Distribution</th><th>PMF f(x)</th><th>Mean μ</th><th>Variance σ²</th><th>Use when…</th></tr>
+        <tr><td>Discrete Uniform</td><td>1/n</td><td>(a+b)/2</td><td>[(b−a+1)²−1]/12</td><td>Equally likely outcomes</td></tr>
+        <tr><td>Binomial</td><td>C(n,x) pˣ(1−p)ⁿ⁻ˣ</td><td>np</td><td>np(1−p)</td><td>Fixed n trials, constant p</td></tr>
+        <tr><td>Hypergeometric</td><td>C(k,x)C(N−k,n−x)/C(N,n)</td><td>nk/N</td><td>n·(k/N)·(1−k/N)·(N−n)/(N−1)</td><td>Sampling WITHOUT replacement</td></tr>
+        <tr><td>Geometric</td><td>p(1−p)^(x−1)</td><td>1/p</td><td>(1−p)/p²</td><td>Trials until FIRST success</td></tr>
+        <tr><td>Neg. Binomial</td><td>C(x−1,k−1) pᵏ(1−p)^(x−k)</td><td>k/p</td><td>k(1−p)/p²</td><td>Trials until k-th success</td></tr>
+        <tr><td>Poisson</td><td>e⁻λ λˣ / x!</td><td>λ</td><td>λ</td><td>Random events per unit time/area</td></tr>
+      </table>
+    </div>
+
+    <!-- Discrete Uniform -->
+    <div class="topic">
+      <h3>Discrete Uniform Distribution</h3>
+      <div class="formula-box">
+        <span class="label">PMF</span>
+        f(xᵢ) = 1/n   for i = 1, 2, …, n<br><br>
+        <span class="label">Consecutive Integers a to b</span>
+        f(x) = 1/(b−a+1)<br>
+        μ = (a+b)/2<br>
+        σ² = [(b−a+1)² − 1] / 12
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example 2</span> 48 Voice Lines</div>
+        <div class="example-body">
+          <p>X = # lines in use, X ~ Uniform(0, 48). Find E(X) and SD(X).</p>
+          <div class="solution">
+            <p>μ = (0+48)/2 = <strong>24</strong></p>
+            <div class="answer">σ = √[(49²−1)/12] = √(2400/12) = √200 ≈ 14.14</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Binomial -->
+    <div class="topic">
+      <h3>5.2 — Binomial Distribution</h3>
+      <div class="formula-box">
+        <span class="label">Conditions (Bernoulli Trials)</span>
+        1. Fixed n trials<br>
+        2. Each trial: Success or Failure<br>
+        3. P(success) = p = constant each trial<br>
+        4. Trials are independent<br><br>
+        <span class="label">PMF</span>
+        b(x; n, p) = C(n,x) · pˣ · (1−p)^(n−x)   for x = 0,1,…,n<br><br>
+        <span class="label">Mean &amp; Variance</span>
+        μ = np<br>
+        σ² = np(1−p) = npq   where q = 1−p
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 5 (Ex 5.5)</span> Digital Channel — n=4, p=0.1, x=2</div>
+        <div class="example-body">
+          <div class="solution">
+            <div class="answer">P(X=2) = C(4,2)(0.1)²(0.9)² = 6 × 0.01 × 0.81 = 0.0486</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 6</span> Organic Pollution — n=18, p=0.1</div>
+        <div class="example-body">
+          <p>(a) P(exactly 2 contain pollutant)?  (b) P(at least 4)?  (c) P(3 ≤ X ≤ 7)?</p>
+          <div class="solution">
+            <p>(a) P(X=2) = C(18,2)(0.1)²(0.9)¹⁶ = 153(0.01)(0.9)¹⁶ = <strong>0.2835</strong></p>
+            <p>(b) P(X≥4) = 1 − P(X≤3) = 1 − Σ_{x=0}^{3} b(x;18,0.1) = <strong>0.0982</strong></p>
+            <p>(c) P(3≤X≤7) = P(X≤7) − P(X≤2) = <strong>0.2660</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 8 (5.16)</span> Blood Disease — n=15, p=0.4</div>
+        <div class="example-body">
+          <p>(a) P(at least 10 survive)?  (b) P(3 to 8)?  (c) P(exactly 5)?</p>
+          <div class="solution">
+            <p>(a) P(X≥10) = 1 − P(X≤9) = <strong>0.0338</strong></p>
+            <p>(b) P(3≤X≤8) = P(X≤8) − P(X≤2) = <strong>0.8779</strong></p>
+            <p>(c) P(X=5) = C(15,5)(0.4)⁵(0.6)¹⁰ = <strong>0.1859</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.22</span> Parallel System — 5 Components, p=0.9</div>
+        <div class="example-body">
+          <p>System fails only if ALL components fail. P(system works) = P(X≥1)?</p>
+          <div class="solution">
+            <p>P(X≥1) = 1 − P(X=0) = 1 − (0.1)⁵</p>
+            <div class="answer">= 1 − 0.00001 = 0.99999 ≈ 99.999%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.30</span> Clinical Trial — n=10, p=0.8, P(X≥9)</div>
+        <div class="example-body">
+          <div class="solution">
+            <p>P(X=9) + P(X=10) = C(10,9)(0.8)⁹(0.2) + (0.8)¹⁰</p>
+            <div class="answer">= 0.2684 + 0.1074 = 0.3758</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hypergeometric -->
+    <div class="topic">
+      <h3>5.3 — Hypergeometric Distribution</h3>
+      <div class="formula-box">
+        <span class="label">Setup</span>
+        N = total population<br>
+        k = number of successes in population<br>
+        n = sample size (without replacement)<br>
+        x = number of successes in sample<br><br>
+        <span class="label">PMF</span>
+        h(x; N, n, k) = C(k,x) · C(N−k, n−x) / C(N,n)<br>
+        where max(0, n−N+k) ≤ x ≤ min(k, n)<br><br>
+        <span class="label">Mean &amp; Variance</span>
+        μ = nk/N<br>
+        σ² = n·(k/N)·(1−k/N)·(N−n)/(N−1)
+      </div>
+      <div class="insight"><p><strong>Key difference from Binomial:</strong> Hypergeometric is sampling <em>WITHOUT replacement</em> from a finite population. When N is large (n/N ≤ 0.05), approximate with Binomial using p = k/N.</p></div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.40</span> Committee Selection</div>
+        <div class="example-body">
+          <p>N=8 people (3 chemists, 5 others). Select n=5. Find distribution of X = # chemists selected.</p>
+          <div class="solution">
+            <p>x can be 0,1,2,3</p>
+            <p>P(X=x) = C(3,x)·C(5,5−x)/C(8,5)</p>
+            <p>C(8,5) = 56</p>
+            <p>P(X=0) = C(3,0)C(5,5)/56 = 1/56</p>
+            <p>P(X=1) = C(3,1)C(5,4)/56 = 15/56</p>
+            <p>P(X=2) = C(3,2)C(5,3)/56 = 30/56</p>
+            <p>P(X=3) = C(3,3)C(5,2)/56 = 10/56</p>
+            <div class="answer">Sum = 56/56 = 1 ✓</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.44</span> N=10, n=4, k=3, x=2</div>
+        <div class="example-body">
+          <div class="solution">
+            <div class="answer">P(X=2) = C(3,2)·C(7,2)/C(10,4) = 3·21/210 = 63/210 = 0.3</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.48</span> Safety Check — N=10, n=5, k=2, P(X≥1)</div>
+        <div class="example-body">
+          <div class="solution">
+            <p>P(X≥1) = 1 − P(X=0) = 1 − C(2,0)C(8,5)/C(10,5)</p>
+            <p>= 1 − 56/252</p>
+            <div class="answer">= 1 − 0.2222 = 0.7778</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Geometric & Negative Binomial -->
+    <div class="topic">
+      <h3>5.4 — Geometric &amp; Negative Binomial Distributions</h3>
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="label">Geometric — Wait for 1st Success</span>
+          f(x) = p·(1−p)^(x−1),   x = 1, 2, 3, …<br>
+          μ = 1/p<br>
+          σ² = (1−p)/p²
+        </div>
+        <div class="formula-box">
+          <span class="label">Negative Binomial — Wait for k-th Success</span>
+          f(x) = C(x−1, k−1)·pᵏ·(1−p)^(x−k),   x = k, k+1, …<br>
+          μ = k/p<br>
+          σ² = k(1−p)/p²
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 10</span> Wafer Contamination — Geometric</div>
+        <div class="example-body">
+          <p>P(large particle) = 0.01. P(exactly 125 wafers analyzed before first particle detected)?</p>
+          <div class="solution">
+            <div class="answer">P(X=125) = (0.99)¹²⁴(0.01) = 0.00288</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 12</span> Manufacturing Defect</div>
+        <div class="example-body">
+          <p>1 in 100 items defective (p=0.01). P(5th item is first defective)?</p>
+          <div class="solution">
+            <div class="answer">g(5; 0.01) = (0.01)(0.99)⁴ = 0.0096</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.60</span> Negative Binomial — k=2, x=6, p=0.01</div>
+        <div class="example-body">
+          <div class="solution">
+            <div class="answer">P(X=6) = C(5,1)(0.01)²(0.99)⁴ = 5(0.0001)(0.9606) ≈ 0.00048</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.68</span> Geometric Mean — p=0.05</div>
+        <div class="example-body">
+          <div class="solution">
+            <div class="answer">E(X) = 1/p = 1/0.05 = 20 items</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Poisson -->
+    <div class="topic">
+      <h3>5.5 — Poisson Distribution</h3>
+      <div class="formula-box">
+        <span class="label">PMF</span>
+        p(x; λ) = e⁻λ · λˣ / x!   for x = 0, 1, 2, …<br><br>
+        <span class="label">Mean &amp; Variance</span>
+        μ = λ   and   σ² = λ<br><br>
+        <span class="label">Scaling Property</span>
+        If rate is λ per unit time, over interval t: μ = λt<br><br>
+        <span class="label">Poisson Approximation to Binomial</span>
+        When n is large and p is small (n·p = λ finite): use Poisson with λ = np
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.76</span> Call Center — λ=2.5 calls/min</div>
+        <div class="example-body">
+          <div class="solution">
+            <p>P(X=3) = e⁻²·⁵(2.5)³/3! = 0.2138·15.625/6 = <strong>0.2138 × 2.604 = 0.1336</strong></p>
+            <p>P(X≤4) [cumulative] = <strong>0.5438</strong></p>
+            <p>P(X=0) = e⁻²·⁵ = <strong>0.0821</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.88</span> Highway Defects — λ=1 per mile, t=10 miles</div>
+        <div class="example-body">
+          <p>μ = λt = 10. P(at least 1 defect)?</p>
+          <div class="solution">
+            <p>P(X≥1) = 1 − P(X=0) = 1 − e⁻¹⁰</p>
+            <div class="answer">= 1 − 0.0000454 ≈ 0.9995</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.94</span> Poisson Approximation to Binomial — n=2000, p=0.001</div>
+        <div class="example-body">
+          <p>λ = np = 2. P(X ≤ 4)?</p>
+          <div class="solution">
+            <div class="answer">P(X≤4) = Σ_{x=0}^{4} e⁻²·2ˣ/x! = 0.9473</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Problem 5.96</span> Half-Minute Rate — λ=10/min, t=0.5 min</div>
+        <div class="example-body">
+          <p>μ = 10 × 0.5 = 5. P(X = 3)?</p>
+          <div class="solution">
+            <div class="answer">P(X=3) = e⁻⁵·5³/3! = 0.0067 × 125/6 = 0.1404 → 0.1755 (for P(X≤3))</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ CHAPTER 6 ═══ -->
+<section id="ch6">
+  <div class="chapter-header ch6">
+    <div>
+      <div class="chapter-num">Chapter 6</div>
+      <h2>Continuous Probability Distributions</h2>
+    </div>
+  </div>
+  <div class="chapter-body">
+    <div class="warn"><p>⚠️ <strong>Section 6.5 (Normal Approximation to the Binomial) is EXCLUDED from the final exam.</strong></p></div>
+
+    <!-- 6.1 Uniform -->
+    <div class="topic">
+      <h3>6.1 — Continuous Uniform Distribution</h3>
+      <div class="formula-box">
+        <span class="label">PDF</span>
+        f(x; A, B) = 1/(B−A)   for A ≤ x ≤ B,   0 elsewhere<br><br>
+        <span class="label">Mean &amp; Variance</span>
+        μ = (A+B)/2<br>
+        σ² = (B−A)²/12<br><br>
+        <span class="label">CDF</span>
+        F(x) = 0               for x &lt; A<br>
+        F(x) = (x−A)/(B−A)    for A ≤ x ≤ B<br>
+        F(x) = 1               for x &gt; B<br><br>
+        <span class="label">Probability in interval [a,b] ⊆ [A,B]</span>
+        P(a &lt; X &lt; b) = (b−a)/(B−A)
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example 6.20</span> Coffee Machine — A=7, B=10</div>
+        <div class="example-body">
+          <p>X ~ Uniform(7,10). Find (a) μ, σ²  (b) P(X &lt; 8.5)</p>
+          <div class="solution">
+            <p>(a) μ = (7+10)/2 = <strong>8.5</strong>,   σ² = (10−7)²/12 = 9/12 = <strong>0.75</strong></p>
+            <p>(b) P(X &lt; 8.5) = (8.5−7)/(10−7) = 1.5/3 = <strong>0.5</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="example">
+        <div class="example-header"><span>Example 6.22</span> Bus Arrival — Uniform(0,10) minutes wait</div>
+        <div class="example-body">
+          <p>(a) P(wait &gt; 7)?  (b) P(2 &lt; wait &lt; 7)?</p>
+          <div class="solution">
+            <p>(a) P(X &gt; 7) = (10−7)/10 = <strong>0.3</strong></p>
+            <p>(b) P(2 &lt; X &lt; 7) = (7−2)/10 = <strong>0.5</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6.2-6.4 Normal -->
+    <div class="topic">
+      <h3>6.2–6.4 — Normal Distribution</h3>
+      <div class="formula-box">
+        <span class="label">PDF</span>
+        n(x; μ, σ) = (1/√(2πσ²)) · exp[−(x−μ)²/(2σ²)]   for −∞ &lt; x &lt; ∞<br><br>
+        <span class="label">Properties</span>
+        • Bell-shaped, symmetric about μ<br>
+        • Mode = Mean = Median = μ<br>
+        • Total area under curve = 1<br>
+        • Approaches x-axis asymptotically<br><br>
+        <span class="label">Standardization — Convert X to Z</span>
+        Z = (X − μ) / σ       where Z ~ N(0,1)<br><br>
+        <span class="label">Finding Probabilities</span>
+        P(X &lt; x) = P(Z &lt; z)  — look up in Z-table<br>
+        P(a &lt; X &lt; b) = P(z₁ &lt; Z &lt; z₂) = Φ(z₂) − Φ(z₁)<br>
+        P(X &gt; x) = 1 − Φ(z)
+      </div>
+      <div class="insight"><p><strong>Z-table gives P(Z &lt; z) = Φ(z).</strong> For negative z: Φ(−z) = 1 − Φ(z) by symmetry.</p></div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 6.5</span> X ~ N(300, 50). P(X &gt; 362)?</div>
+        <div class="example-body">
+          <div class="solution">
+            <p>z = (362 − 300)/50 = 1.24</p>
+            <p>P(X &gt; 362) = 1 − Φ(1.24) = 1 − 0.8925</p>
+            <div class="answer">= 0.1075</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 6.10</span> Mouse Lifetimes — N(40, 6.3). Find P(X &gt; 32), P(X &lt; 28), P(37 &lt; X &lt; 49)</div>
+        <div class="example-body">
+          <div class="solution">
+            <p>(a) z = (32−40)/6.3 = −1.27 → P(X &gt; 32) = P(Z &gt; −1.27) = Φ(1.27) = <strong>0.8980</strong></p>
+            <p>(b) z = (28−40)/6.3 = −1.90 → P(X &lt; 28) = Φ(−1.90) = 1 − 0.9713 = <strong>0.0287</strong></p>
+            <p>(c) z₁=(37−40)/6.3 = −0.48,  z₂=(49−40)/6.3 = 1.43</p>
+            <div class="answer">P = Φ(1.43) − Φ(−0.48) = 0.9236 − 0.3156 = 0.6080</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example 6.14</span> Heights — N(174.5, 6.9). P(heights &lt; 160)?</div>
+        <div class="example-body">
+          <div class="solution">
+            <p>z = (160 − 174.5)/6.9 = −2.10</p>
+            <div class="answer">P(X &lt; 160) = Φ(−2.10) = 1 − 0.9821 = 0.0179</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6.6 Exponential -->
+    <div class="topic">
+      <h3>6.6 — Exponential Distribution</h3>
+      <div class="formula-box">
+        <span class="label">Definition</span>
+        Time/distance between successive Poisson events with rate λ.<br><br>
+        <span class="label">PDF</span>
+        f(x) = λ·e^(−λx)   for x ≥ 0<br><br>
+        <span class="label">CDF</span>
+        F(x) = P(X ≤ x) = 1 − e^(−λx)<br>
+        P(X &gt; x) = e^(−λx)<br><br>
+        <span class="label">Mean &amp; Variance</span>
+        μ = E(X) = 1/λ<br>
+        σ² = 1/λ²      ← NOTE: σ = 1/λ = μ (mean = std. deviation)<br><br>
+        <span class="label">Lack of Memory Property</span>
+        P(X &lt; t₁+t₂ | X &gt; t₁) = P(X &lt; t₂)<br>
+        "The exponential distribution has no memory of the past."
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> Checkout Counter — λ=2 customers/min</div>
+        <div class="example-body">
+          <p>1. Find mean and variance of waiting time.<br>
+             2. P(at least 1 customer waiting when 3-min service completes)?<br>
+             3. P(customer arrives within 1 min)?<br>
+             4. P(arrives next minute | no one arrived in last 2 min)?</p>
+          <div class="solution">
+            <p>1. μ = 1/2 = <strong>0.5 min</strong>,  σ² = 1/4 = <strong>0.25</strong></p>
+            <p>2. P(y ≤ 3) = 1 − e^(−2×3) = 1 − e^(−6) = <strong>0.9975</strong></p>
+            <p>3. P(y ≤ 1) = 1 − e^(−2×1) = 1 − e^(−2) = <strong>0.8647</strong></p>
+            <p>4. By lack-of-memory property: same as above = <strong>0.8647</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> Computer Log-ons — λ=25/hour</div>
+        <div class="example-body">
+          <p>What is the probability of no log-ons in the next 6 minutes (0.1 hour)?</p>
+          <div class="solution">
+            <p>P(X &gt; 0.1) = e^(−25 × 0.1) = e^(−2.5)</p>
+            <div class="answer">= 0.0821</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> Log-ons — P(between 2 and 3 minutes)</div>
+        <div class="example-body">
+          <p>λ=25/hr. P(0.033 hr &lt; X &lt; 0.05 hr)?</p>
+          <div class="solution">
+            <p>= F(0.05) − F(0.033) = (1−e^(−25×0.05)) − (1−e^(−25×0.033))</p>
+            <p>= e^(−0.833) − e^(−1.25)</p>
+            <div class="answer">= 0.435 − 0.287 = 0.148</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-header"><span>Example</span> Geiger Counter — E(X)=1.4 min. P(particle in 30 sec)?</div>
+        <div class="example-body">
+          <p>λ = 1/1.4. P(X ≤ 0.5)?</p>
+          <div class="solution">
+            <p>P(X ≤ 0.5) = 1 − e^(−0.5/1.4) = 1 − e^(−0.357)</p>
+            <div class="answer">= 1 − 0.700 = 0.300</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer style="text-align:center; padding: 2rem; color: var(--muted); border-top: 1px solid var(--border); font-size: 0.85rem;">
+  IE0121 Probability &amp; Statistics · GJU · Final Exam Study Guide · Covers Ch. 2–6 (excl. Ch.1 and 6.5)
+</footer>
+
+</body>
+</html>
